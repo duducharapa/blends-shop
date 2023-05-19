@@ -1,9 +1,9 @@
 interface Product {
-  id: number
-  name: string
-  description: string
-  price: number
-  image: string
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
 }
 
-export default Product
+export default Product;

@@ -1,0 +1,15 @@
+.cardbody {
+  background-color: #FBF5F3 !important;
+}
+
+.imagecontainer {
+  width: 250px;
+  height: 250px;
+}
+
+.unitpricecontainer {
+  border-top-left-radius: var(--border-radius);
+  border: 2px solid #CD135E;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+}

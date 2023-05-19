@@ -1,6 +1,6 @@
-import { ReactNode, useState } from "react";
-import { OrderItemContext, OrderItemContextType } from "./OrderItemContext";
-import OrderItem from "../../interfaces/OrderItem";
+import { ReactNode, useState } from 'react';
+import { OrderItemContext, OrderItemContextType } from './OrderItemContext';
+import OrderItem from '../../interfaces/OrderItem';
 
 interface ProductProviderProps {
   children: ReactNode

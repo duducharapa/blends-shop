@@ -1,8 +1,8 @@
-import Product from "./Product";
+import Product from './Product';
 
 interface OrderItem {
-  product: Product
-  quantity: number
+  product: Product;
+  quantity: number;
 }
 
 export default OrderItem;

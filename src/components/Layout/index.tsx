@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react";
-import Header from "../Header";
-import { Footer } from "../Footer";
-import CartButton from "../CartButton";
+import React, { ReactNode } from 'react';
+import { Header } from '../Header';
+import { Footer } from '../Footer';
+import CartButton from '../CartButton';
 
 interface LayoutProps {
   children: ReactNode;
@@ -16,8 +16,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => (
     </div>
     <Footer />
   </>
-
-
 );
 
 export {
