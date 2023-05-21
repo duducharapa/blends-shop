@@ -1,6 +1,6 @@
 import { Button } from 'primereact/button';
 import { InputNumber, InputNumberValueChangeEvent } from 'primereact/inputnumber';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 interface ProductFooterProps {
   quantity: number;
@@ -9,6 +9,8 @@ interface ProductFooterProps {
 }
 
 const ProductFooter: React.FC<ProductFooterProps> = ({ quantity, onQuantityChange, onConfirmButton }) => {
+  const disabledButton = useMemo(() => quantity <= 0, [quantity]);
+  
   return (
     <div className='w-100 flex justify-content-between'>
       <InputNumber
@@ -17,7 +19,7 @@ const ProductFooter: React.FC<ProductFooterProps> = ({ quantity, onQuantityChang
         decrementButtonClassName='p-button-danger' incrementButtonClassName='p-button-primary' inputClassName='w-4rem md:w-3rem'
         decrementButtonIcon='pi pi-minus' incrementButtonIcon='pi pi-plus'
       />
-      <Button raised label='Adicionar' onClick={onConfirmButton} className='p-ripple' />
+      <Button raised disabled={disabledButton} label='Adicionar' onClick={onConfirmButton} className='p-ripple' />
     </div>
   );
 }
