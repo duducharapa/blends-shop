@@ -6,9 +6,7 @@ import classNames from './home.module.css';
 const Home: React.FC = () => (
   <Layout>
     <div className='my-5 flex flex-column'>
-      <div className='px-3 mb-5'>
-        <h1 className={`text-2xl ${classNames.apresentationtext}`}>Confira nossos produtos</h1>
-      </div>
+      <h1 className={`text-4xl text-center mb-3 text-primary ${classNames.title}`}>Confira nossos produtos</h1>
       
       <div className='grid grid-nogutter px-3 gap-3 justify-content-center'>
         {

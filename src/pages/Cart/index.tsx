@@ -6,6 +6,7 @@ import { routes } from '../../routes/routes';
 import { useMemo } from 'react';
 import maskPrice from '../../utils/maskPrice';
 import { useItems } from '../../hooks/items';
+import classNames from './cart.module.css';
 
 const Cart = () => {
   const { items } = useItems();
@@ -27,6 +28,8 @@ const Cart = () => {
             <i className='pi pi-arrow-left text-primary text-3xl' />
           </Link>
         </div>
+
+        <h1 className={`my-3 text-center text-primary text-4xl ${classNames.title}`}>Meu pedido</h1>
 
         <div className='w-100 px-5'>
           <CartList />

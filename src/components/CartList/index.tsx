@@ -5,7 +5,7 @@ const CartList: React.FC = () => {
   const { items } = useItems();
 
   return (
-    <div className='mt-3'>
+    <div>
       {
         items.map(item => <ItemCard item={item} />)
       }

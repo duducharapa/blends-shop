@@ -18,13 +18,17 @@ function CartButton() {
   );
 
   const generateOrder = () => {
-    if (items.length < 1) {
-      return toast.current?.show({ severity: 'error', summary: 'Pedido vazio!', detail: 'Seu pedido não possui itens!' });
-    }
+    if (items.length < 1) return;
 
     toast.current?.show({ severity: 'success', summary: 'Sucesso!', detail: 'Pedido feito com sucesso!' });
     return clearItems();
   }
+
+  const buttonDisabled = useMemo(() => {
+    const { pathname } = location;
+
+    return pathname == routes.CART && items.length <= 0;
+  }, [items]);
 
   const onClick = () => {
     const { pathname } = location;
@@ -44,7 +48,7 @@ function CartButton() {
           fixed shadow-7 w-5rem h-5rem md:w-6rem md:h-6rem border-circle flex align-items-center justify-content-center
           ${classNames.cartbutton}
         `}
-        onClick={onClick}
+        onClick={onClick} disabled={buttonDisabled}
       >
         <i className={`pi ${iconClassName} text-2xl md:text-3xl`}></i>
       </Button>
