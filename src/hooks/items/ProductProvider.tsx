@@ -13,9 +13,19 @@ const ProductsProvider: React.FC<ProductProviderProps> = ({ children }) => {
     setItems([ ...items, item ]);
   }
 
+  const removeItem = ({ product }: OrderItem) => {
+    setItems(items.filter(({ product: actualProduct }) => product.id != actualProduct.id));
+  }
+
+  const clearItems = () => {
+    setItems([]);
+  }
+
   const contextValues: OrderItemContextType = {
     items,
-    addItem
+    addItem,
+    removeItem,
+    clearItems
   };
 
   return (
