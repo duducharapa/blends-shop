@@ -20,15 +20,15 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
   }
 
   return (
-    <div className={`p-4 flex justify-content-between ${classNames.cardcontainer}`}>
-      <div className='flex'>
-        <Image src={product.image} width='100' className='border-round' />
-        <div className='ml-3 text-color flex flex-column gap-2'>
+    <div className={`p-4 flex gap-1 md:gap-0 flex-column md:flex-row justify-content-between ${classNames.cardcontainer}`}>
+      <div className='flex flex-column md:flex-row justify-content-center md:justify-content-start'>
+        <Image src={product.image} width='100' className='border-round align-self-center' />
+        <div className='ml-0 md:ml-3 mt-2 md:mt-0 text-color flex flex-column gap-1'>
           <h4 className='font-bold text-xl'>{nameLabel}</h4>
           <p className='text-color-secondary text-sm'>{product.description}</p>
         </div>
       </div>
-      <div className='flex flex-column align-items-end gap-2 text-color'>
+      <div className='flex flex-column align-items-start md:align-items-end gap-1 text-color'>
         <p className='font-bold text-lg'>
           <span className='text-xl'>R$ </span>
           {maskPrice(quantity * product.price)}
@@ -36,6 +36,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         <Button
           severity='danger' aria-label='Excluir item' icon="pi pi-trash" onClick={() => onClick(item)}
           style={{ width: '48px', height: '48px' }}
+          className='align-self-end'
         />
       </div>
     </div>
