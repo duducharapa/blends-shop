@@ -5,7 +5,7 @@ import Product from '../../interfaces/Product';
 import React, { useRef, useState } from 'react';
 import { TotalLabel } from './TotalLabel';
 import { useItems } from '../../hooks/items';
-import OrderItem from '../../interfaces/OrderItem';
+import { OrderItem } from '../../interfaces/OrderItem';
 import { PriceLabel } from './PriceLabel';
 import { ProductFooter } from './ProductFooter';
 

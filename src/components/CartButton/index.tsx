@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { routes } from '../../routes/routes';
 import classNames from './cart-button.module.css';
 import { useItems } from '../../hooks/items';
+import { OrderItem, OrderItemRequest } from '../../interfaces/OrderItem';
+import { createOrder } from '../../services/order';
 
 function CartButton() {
   const { items, clearItems } = useItems();
@@ -17,11 +19,21 @@ function CartButton() {
     [location]
   );
 
-  const generateOrder = () => {
+  const generateOrder = async () => {
     if (items.length < 1) return;
 
-    toast.current?.show({ severity: 'success', summary: 'Sucesso!', detail: 'Pedido feito com sucesso!' });
-    return clearItems();
+    const orderData = items.map<OrderItemRequest>((item: OrderItem) => {
+      return { product_id: item.product.id, quantity: item.quantity };
+    });
+
+    const data = await createOrder(orderData);
+
+    if (data) {
+      toast.current?.show({ severity: 'success', summary: 'Sucesso!', detail: 'Pedido feito com sucesso!' });
+      return clearItems();
+    }
+
+    return toast.current?.show({ severity: 'error', summary: 'Erro!', detail: 'Ocorreu um erro ao realizar seu pedido!' });
   }
 
   const buttonDisabled = useMemo(() => {

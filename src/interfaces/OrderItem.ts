@@ -5,4 +5,12 @@ interface OrderItem {
   quantity: number;
 }
 
-export default OrderItem;
+interface OrderItemRequest {
+  product_id: number;
+  quantity: number;
+}
+
+export type {
+  OrderItem,
+  OrderItemRequest
+};
