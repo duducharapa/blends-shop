@@ -1,14 +1,13 @@
-import { Card } from 'primereact/card'
-import { Image } from 'primereact/image'
-import { InputNumberValueChangeEvent } from 'primereact/inputnumber'
+import { Card } from 'primereact/card';
+import { Image } from 'primereact/image';
+import { InputNumberValueChangeEvent } from 'primereact/inputnumber';
 import Product from '../../interfaces/Product';
-import React, { useRef, useState } from 'react';
+import { ReactElement, useRef, useState } from 'react';
 import { TotalLabel } from './TotalLabel';
 import { useItems } from '../../hooks/items';
 import { OrderItem } from '../../interfaces/OrderItem';
 import { PriceLabel } from './PriceLabel';
 import { ProductFooter } from './ProductFooter';
-
 import classNames from './product-card.module.css';
 import { Toast } from 'primereact/toast';
 
@@ -16,7 +15,13 @@ interface ProductCardProps {
   product: Product
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+/**
+ * Card used to render the information of a specific product.
+ * @param {ProductCardProps} props The component props.
+ * @param {Product} props.product The product to render on card.
+ * @return {ReactElement} The card UI for product data.
+ */
+const ProductCard = ({ product }: ProductCardProps): ReactElement => {
   const toast = useRef<Toast>(null);
   const [quantity, setQuantity] = useState(0);
   const { addItem } = useItems();
@@ -25,22 +30,22 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const onConfirmButton = () => {
     if (quantity <= 0) return;
-    
+
     const orderItem: OrderItem = {
       product,
-      quantity
+      quantity,
     };
-    
+
     addItem(orderItem);
     setQuantity(0);
-  }
+  };
 
   const footer = () => <ProductFooter
     quantity={quantity}
     onConfirmButton={onConfirmButton}
     onQuantityChange={onQuantityChange}
   />;
-  
+
   return (
     <>
       <Card title={product.name} footer={footer} className={`text-primary ${classNames.cardbody}`}>
@@ -63,6 +68,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <Toast ref={toast} />
     </>
   );
-}
+};
 
 export default ProductCard;

@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import OrderItem from '../../interfaces/OrderItem';
+import { OrderItem } from '../../interfaces/OrderItem';
 
 interface OrderItemContextType {
   items: OrderItem[];

@@ -6,14 +6,14 @@ import { routes } from './routes';
 const Router = createBrowserRouter([
   {
     path: routes.HOME,
-    element: <Home />
+    element: <Home />,
   },
   {
     path: routes.CART,
-    element: <Cart />
-  }
+    element: <Cart />,
+  },
 ]);
 
 export {
-  Router
+  Router,
 };

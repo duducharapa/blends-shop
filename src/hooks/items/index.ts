@@ -6,5 +6,5 @@ const useItems = () => useContext(OrderItemContext);
 
 export {
   ProductsProvider,
-  useItems
+  useItems,
 };

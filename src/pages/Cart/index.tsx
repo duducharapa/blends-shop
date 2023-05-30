@@ -12,14 +12,14 @@ const Cart = () => {
   const { items } = useItems();
 
   const totalValue = useMemo(() => {
-    return items.reduce((total,item) => {
+    return items.reduce((total, item) => {
       const { product, quantity } = item;
       const totalProduct = product.price * quantity;
-      
+
       return total + totalProduct;
-    }, 0)
+    }, 0);
   }, [items]);
-  
+
   return (
     <Layout>
       <div className='mt-5 h-screen p-fluid'>
@@ -34,7 +34,7 @@ const Cart = () => {
         <div className='w-100 px-5'>
           <CartList />
         </div>
-        
+
         <div className='w-100 px-5 mt-3 flex justify-content-between text-2xl text-color font-semibold'>
           <p>Total:</p>
           <p>
@@ -47,8 +47,8 @@ const Cart = () => {
       <CartButton />
     </Layout>
   );
-}
+};
 
 export {
-  Cart
+  Cart,
 };

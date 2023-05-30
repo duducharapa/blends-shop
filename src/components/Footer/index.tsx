@@ -1,6 +1,10 @@
-import React from 'react';
+import { ReactElement } from 'react';
 
-const Footer: React.FC = () => (
+/**
+ * The footer layout for every page on application.
+ * @return {ReactElement} The site static footer content.
+ */
+const Footer = (): ReactElement => (
   <div className='w-100 align-items-end text-center bg-primary py-3 mt-8'>
     <p className='font-light'>
       Developed by -
@@ -10,5 +14,5 @@ const Footer: React.FC = () => (
 );
 
 export {
-  Footer
+  Footer,
 };

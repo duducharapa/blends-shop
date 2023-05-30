@@ -12,5 +12,5 @@ interface OrderItemRequest {
 
 export type {
   OrderItem,
-  OrderItemRequest
+  OrderItemRequest,
 };

@@ -9,4 +9,5 @@ const App: React.FC = () => (
   </ProductsProvider>
 );
 
-export default App
+export default App;
+

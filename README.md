@@ -11,6 +11,8 @@ The principal libraries/built-in functionalities used are:
 - [PrimeFlex CSS](https://www.primefaces.org/primeflex/) for style helpers and CSS modules
 - [React Router](https://reactrouter.com/en/main) for navigation between screens
 - React Context to create hooks and providers
+- [ESLint](https://eslint.org/) with [Google config](https://www.npmjs.com/package/eslint-config-google) for code linting and standartized code
+- [Docker](https://www.docker.com/) to create a container ready for production
 
 ## What is integrated on this project?
 The interface of Blend's Shop has an back-end layer too. The application is built using Java + Spring and you can see
