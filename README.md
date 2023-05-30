@@ -14,4 +14,4 @@ The principal libraries/built-in functionalities used are:
 
 ## What is integrated on this project?
 The interface of Blend's Shop has an back-end layer too. The application is built using Java + Spring and you can see
-more about it [on GitHub repository](www.google.com).
+more about it [on GitHub repository](https://github.com/duducharapa/blends-shop-api).
