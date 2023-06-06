@@ -10,7 +10,6 @@ COPY tsconfig.node.json tsconfig.node.json
 COPY vite.config.ts vite.config.ts
 COPY public/ public/
 COPY src/ src/
-RUN touch .env && echo "VITE_API_URL=http://api:8080" >> .env
 RUN yarn
 RUN yarn build
 
