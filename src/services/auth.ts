@@ -1,23 +1,37 @@
-import { isAxiosError } from 'axios';
 import api from './api';
+import { ResponseData } from '../interfaces/Requests';
+import { isAxiosError } from 'axios';
 
-const getAuthToken = async (accessCode: string, password: string) => {
+const getAuthToken = async (accessCode: string, password: string): Promise<ResponseData<void>> => {
+  const credentials = {
+    username: accessCode,
+    password,
+  };
+
   try {
-    const { status, headers } = await api.post('/getToken', null, {
-      headers: {
-        username: accessCode,
-        password: password,
-      },
+    const { status, headers } = await api.post('/login', null, {
+      headers: { ...credentials },
     });
 
-    if (status === 200 && headers.hasAuthorization) {
-      return headers['authorization'];
-    }
+    const requestData: ResponseData<void> = {
+      authToken: headers['authorization'],
+      status,
+    };
+
+    return requestData;
   } catch (err) {
     if (isAxiosError(err)) {
-      console.log('error: ', err);
+      const requestData: ResponseData<void> = {
+        status: err.response?.status || 500,
+      };
+
+      return requestData;
     }
   }
+
+  return {
+    status: 500,
+  };
 };
 
 export {
