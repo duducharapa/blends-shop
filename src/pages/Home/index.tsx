@@ -22,17 +22,19 @@ const Home: React.FC = () => {
 
   return (
     <Layout>
-      <div className='my-5 flex flex-column'>
-        <h1 className={`text-4xl text-center mb-3 text-primary ${classNames.title}`}>Confira nossos produtos</h1>
+      <div className='min-h-screen'>
+        <div className='my-5 flex flex-column'>
+          <h1 className={`text-4xl text-center mb-3 text-primary ${classNames.title}`}>Confira nossos produtos</h1>
 
-        <div className='grid grid-nogutter px-3 gap-3 justify-content-center'>
-          {
-            products.map((item) => (
-              <div className='col-12 md:col-5 lg:col-3' key={item.id}>
-                <ProductCard product={item} />
-              </div>
-            ))
-          }
+          <div className='grid grid-nogutter px-3 gap-3 justify-content-center'>
+            {
+              products.map((item) => (
+                <div className='col-12 md:col-5 lg:col-3' key={item.id}>
+                  <ProductCard product={item} />
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
     </Layout>
