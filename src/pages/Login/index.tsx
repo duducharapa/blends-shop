@@ -6,9 +6,8 @@ import { BackButton } from '../../components/BackButton';
 import { classNames } from 'primereact/utils';
 import css from './login.module.css';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { getAuthToken } from '../../services/auth';
 import { Toast } from 'primereact/toast';
-import { ResponseData } from '../../interfaces/Requests';
+import { useAuth } from '../../hooks/auth';
 
 type Inputs = {
   accessCode: string
@@ -17,6 +16,8 @@ type Inputs = {
 
 const Login = (): ReactElement => {
   const toast = useRef<Toast>(null);
+  const { login } = useAuth();
+
   const defaultValues: Inputs = {
     accessCode: '',
     password: '',
@@ -30,12 +31,11 @@ const Login = (): ReactElement => {
   } = useForm<Inputs>({ defaultValues });
 
   const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
-    const response: ResponseData<void> = await getAuthToken(data.accessCode, data.password);
+    const { accessCode, password } = data;
+    const status = await login(accessCode, password);
 
-    switch (response.status) {
+    switch (status) {
       case 200:
-        console.log(response.authToken);
-        reset();
         break;
       case 403:
         toast.current?.show({
@@ -43,6 +43,7 @@ const Login = (): ReactElement => {
           summary: 'Credenciais inválidas',
           detail: 'As credenciais fornecidas são inválidas',
         });
+        reset();
         break;
       default:
         toast.current?.show({
@@ -50,6 +51,7 @@ const Login = (): ReactElement => {
           summary: 'Falha na conexão!',
           detail: 'Erro ao conectar com o servidor!',
         });
+        reset();
     }
   };
 

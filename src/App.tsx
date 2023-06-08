@@ -1,16 +1,14 @@
-import { RouterProvider } from 'react-router-dom';
-import { ProductsProvider } from './hooks/items';
-import React from 'react';
-import { Router } from './routes/Router';
 import { AuthProvider } from './hooks/auth';
+import { ReactElement } from 'react';
+import { Providers } from './components/Providers';
 
-const App: React.FC = () => (
-  <ProductsProvider>
+const App = (): ReactElement => {
+  return (
     <AuthProvider>
-      <RouterProvider router={Router} />
+      <Providers />
     </AuthProvider>
-  </ProductsProvider>
-);
+  );
+};
 
 export default App;
 
